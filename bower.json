@@ -20,8 +20,9 @@
     "chat",
     "Freshchat"
   ],
-  "dependencies": {
-    "freshchat-widget": "https://github.com/freshdesk/freshchat-widget.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freshdesk/freshchat-widget.git"
   },
   "authors": [
     "Freshworks Inc <support@freshchat.com>"
