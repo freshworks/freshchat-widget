@@ -1,0 +1,28 @@
+{
+  "name": "freshchat-widget",
+  "description": "Widget API For Freshchat",
+  "main": [
+    "js/widget.js"
+  ],
+  "keywords": [
+    "Live",
+    "chat",
+    "customer",
+    "messaging",
+    "modern",
+    "messaging",
+    "web",
+    "chat",
+    "app",
+    "website",
+    "chat",
+    "web",
+    "chat",
+    "Freshchat"
+  ],
+  "authors": [
+    "Freshworks Inc <support@freshchat.com>"
+  ],
+  "license": "Freshworks Inc",
+  "homepage": "https://www.freshworks.com/freshchat-livechat-software/"
+}
