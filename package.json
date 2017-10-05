@@ -1,0 +1,35 @@
+{
+  "name": "freshchat-widget",
+  "version": "1.0.0",
+  "description": "Widget API For Freshchat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freshdesk/freshchat-widget.git"
+  },
+  "keywords": [
+    "Live",
+    "chat",
+    "customer",
+    "messaging",
+    "modern",
+    "messaging",
+    "web",
+    "chat",
+    "app",
+    "website",
+    "chat",
+    "web",
+    "chat",
+    "Freshchat"
+  ],
+  "author": "Freshworks Inc <support@freshchat.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freshdesk/freshchat-widget/issues"
+  },
+  "homepage": "https://github.com/freshdesk/freshchat-widget#readme"
+}
