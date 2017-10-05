@@ -2,7 +2,7 @@
   "name": "freshchat-widget",
   "version": "1.0.0",
   "description": "Widget API For Freshchat",
-  "main": "index.js",
+  "main": "./js/widget.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
