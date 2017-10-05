@@ -27,6 +27,6 @@
   "authors": [
     "Freshworks Inc <support@freshchat.com>"
   ],
-  "license": "Freshworks Inc",
+  "license": "MIT",
   "homepage": "https://www.freshworks.com/freshchat-livechat-software/"
 }
