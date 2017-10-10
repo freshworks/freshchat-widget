@@ -122,8 +122,7 @@ var freshchatService = (function() {
             */
           window.fcWidget.user.update({
             firstName: "FIRST_NAME",
-            lastName: "LAST_NAME",
-            ...
+            lastName: "LAST_NAME"
           });
         }
       }
