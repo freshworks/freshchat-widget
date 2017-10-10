@@ -27,9 +27,8 @@ var freshchatService = (function() {
      * @method loadWidget - Load the widget
      */
     loadWidget: function() {
-      var widget = window.fcWidget,
-          _self = this;
-      widget.on('widget:loaded', function() {
+      var _self = this;
+      window.fcWidget.on('widget:loaded', function() {
         _self.loadUser();
       }, function() {
         // Error Loading Widget
@@ -43,7 +42,7 @@ var freshchatService = (function() {
     loadUser: function(user) {
       var _self = this;
       // Check the user
-      widget.user.get().then(function(response) {
+      window.fcWidget.user.get().then(function(response) {
         _self.validateUser(response, user);
       }, function(error) {
         _self.validateUser(error, user);
