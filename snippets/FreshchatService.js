@@ -1,4 +1,4 @@
-var freshchatService = (function() {
+module.exports = function() {
   return {
     /*
      * Freshchat Widget Init Method - Set the payload here
@@ -22,7 +22,6 @@ var freshchatService = (function() {
         };
       }
     },
-
     /*
      * @method loadWidget - Load the widget
      */
@@ -31,10 +30,9 @@ var freshchatService = (function() {
       window.fcWidget.on('widget:loaded', function() {
         _self.loadUser();
       }, function() {
-        // Error Loading Widget
-      })
+          // Error Loading Widget
+      });
     },
-
     /*
      * @method loadUser - Load the widget user
      * @param Object user - site user Object
@@ -48,7 +46,6 @@ var freshchatService = (function() {
         _self.validateUser(error, user);
       });
     },
-
     /*
      * @method validateUser - Validate the Loaded User
      * @param Object response - widget user Object
@@ -69,9 +66,9 @@ var freshchatService = (function() {
          * Otherwise comment this
          */
         widget.user.create().then(function(resp) {
-          _self.updateUser(resp, user);
+            _self.updateUser(resp, user);
         }, function(err) => {
-          console.log("Error creating user");
+            console.log("Error creating user");
         });
       } else if ([401, 404, 409].includes(status) && rstId) {
         /*
@@ -80,13 +77,12 @@ var freshchatService = (function() {
          */
         user.restoreId = void 0;
         widget.user.create().then(function(resp) {
-          _self.updateUser(resp, user);
+            _self.updateUser(resp, user);
         }, function(err) => {
-          console.log("Error creating user");
+            console.log("Error creating user");
         });
       }
     },
-
     /*
      * Freshchat Widget Update Method
      * @param Object response - widget user Object
@@ -99,26 +95,22 @@ var freshchatService = (function() {
       if (data) {
         let rstId = data.restoreId,
             extId = data.externalId || data.identifier;
-
         if ((externalId && externalId === extId) && (restoreId !== rstId)) {
           /*
            * Identified a mismatch between widget user and site user credentials
            * Update restoreId for the site user
            */
-
-           // `Replace this with your ajax call`
-           window.updateSiteUser(rstId).then(function(resp) {
-             // On Success update the local site user object
-             if (resp && user) {
-               user.restoreId = rstId;
-               console.log(`Restore ID updated for user ${rstId}`);
-             }
-           });
-
-
-           /*
-            * Update widget user custom parameters here
-            */
+          // `Replace this with your ajax call`
+          window.updateSiteUser(rstId).then(function(resp) {
+            // On Success update the local site user object
+            if (resp && user) {
+                user.restoreId = rstId;
+                console.log(`Restore ID updated for user ${rstId}`);
+            }
+          });
+          /*
+           * Update widget user custom parameters here
+           */
           window.fcWidget.user.update({
             firstName: "FIRST_NAME",
             lastName: "LAST_NAME"
@@ -127,4 +119,4 @@ var freshchatService = (function() {
       }
     }
   }
-})();
+}
