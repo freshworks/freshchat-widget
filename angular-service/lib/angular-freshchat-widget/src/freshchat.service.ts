@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+//added this line as extra
+//npm install freshchat-widget
+export *  from 'freshchat-widget';
 
 @Injectable()
 export class FreshchatService {
@@ -26,12 +29,15 @@ export class FreshchatService {
     }
 
     if (this.widget.fcWidget) {
+      this.widget.fcWidget.on("widget:loaded", (resp) => {
+        console.log('Widget Loaded');
+        this.loadWidget(null);
+      });
       this.widget.fcWidget.init({
         token: payload.token,
         host: payload.host,
         externalId: payload.externalId,
-        restoreId: payload.restoreId,
-        onInit: this.loadWidget
+        restoreId: payload.restoreId
       });
     } else {
       this.widget.fcSettings = {
@@ -63,7 +69,7 @@ export class FreshchatService {
     let status = response && response.status,
       rstId = user && user.restoreId;
     if (status === 200) {
-      this.updateUser(response, user);
+      this.verifyUser(response, user);
     }
     if ([401, 403, 404].indexOf(status) > -1 && !rstId) {
       /*
@@ -85,14 +91,14 @@ export class FreshchatService {
 
   createUser = () => {
     this.widget.fcWidget.user.create().then((resp) => {
-      this.updateUser(resp, this.user);
+      this.verifyUser(resp, this.user);
     }, (err) => {
       this.broadcastStatus({ status: 500, message: `Error creating user ${JSON.stringify(err)}` });
       console.log(`Error creating user ${JSON.stringify(err)}`);
     });
   }
 
-  updateUser = (response: any, user: any) => {
+  verifyUser = (response: any, user: any) => {
     var data = response && response.data,
       externalId = user && user.externalId,
       restoreId = user && user.restoreId;
@@ -109,14 +115,14 @@ export class FreshchatService {
           message: "Identified a mismatch between widget user and site user credentials",
           restoreId: rstId
         });
+      }else{
+        //new user is created
+        this.broadcastStatus({
+          status: 200,
+          message: "User create and use this restore ID for restoring again.",
+          restoreId: data.restoreId
+        });
       }
-    }else{
-      //new user is created
-      this.broadcastStatus({
-        status: 200,
-        message: "User create and use this restore ID for restoring again.",
-        restoreId: data.restoreId
-      });
     }
   }
 }

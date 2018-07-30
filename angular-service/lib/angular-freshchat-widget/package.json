@@ -71,5 +71,8 @@
   },
   "engines": {
     "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "freshchat-widget": "^1.0.4"
   }
 }
