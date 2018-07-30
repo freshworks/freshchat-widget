@@ -14,6 +14,7 @@ export class AppComponent {
   todaydate;
   constructor(private widgetService: FreshchatService) {
 
+    //subscription for user creation activities
     this.subscription = widgetService.userCreation.subscribe(
       resp => {
         if (resp) {
@@ -44,6 +45,8 @@ export class AppComponent {
             case 500:
               {
                 //GENERAL AND SERVICE SPECIFIC ERRORS
+                let message = resp.message;
+                console.log(message);
                 break;
               }
             default:
