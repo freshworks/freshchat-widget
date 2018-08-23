@@ -1,6 +1,6 @@
 {
   "name": "freshchat-widget",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Widget API For Freshchat",
   "main": "./js/widget.js",
   "scripts": {
